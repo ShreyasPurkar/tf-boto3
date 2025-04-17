@@ -136,6 +136,7 @@ Desktop.ini
 # Local dev env files
 .env
 .env.*
+*.zip
 
 # Docker (if applicable)
 *.pid
