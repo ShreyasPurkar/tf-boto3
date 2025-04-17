@@ -39,7 +39,7 @@ resource "aws_iam_role_policy" "lambda_all_permissions" {
           "s3:GetObject",
           "s3:PutObject"
         ],
-        Resource = "arn:aws:s3:::29651de9-6eb1-adac-5179-392ba397f0ed/*"
+        Resource = "*"
       }
     ]
   })
