@@ -2,18 +2,20 @@ import boto3
 import zipfile
 import time
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Resource configuration
 aws_profile = os.environ.get("AWS_PROFILE")
 region = os.environ.get("AWS_REGION")
 bucket_name = os.environ.get("BUCKET_NAME")
+lambda_name = "s3-upload-logger"
 role_arn = os.environ.get("LAMBDA_ROLE_ARN")
-account_id = os.environ.get("AWS_ACCOUNT_ID")
+account_id = os.environ.get("ACCOUNT_ID", "").strip('"')
 
-# Load AWS session using configured profile
+# Start an AWS session using the profile configured
 session = boto3.Session(profile_name=aws_profile)
 
-lambda_name = "s3-upload-logger"
 # Create clients for Lambda and S3 services using the session
 lambda_client = session.client("lambda", region_name=region)
 s3_client = session.client("s3", region_name=region)
@@ -43,7 +45,7 @@ try:
 except lambda_client.exceptions.ResourceConflictException:
     print("Lambda already exists, skipping creation.")
 
-# Add Lambda permission so S3 can invoke it
+# Allow S3 to invoke this Lambda on object upload
 try:
     lambda_client.add_permission(
         FunctionName=lambda_name,
