@@ -1,3 +1,8 @@
+[![Terraform Validate](https://github.com/ShreyasPurkar/tf-boto3/actions/workflows/terraform-validations.yml/badge.svg)](https://github.com/ShreyasPurkar/tf-boto3/actions/workflows/terraform-validations.yml)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+![Terraform](https://img.shields.io/badge/Terraform-v1.6+-623CE4?logo=terraform&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-Deployed-orange?logo=amazon-aws)
+
 # AWS Lambda S3 Trigger with Terraform & Boto3
 
 This project sets up an AWS Lambda function that is automatically triggered whenever an object is uploaded to a specified S3 bucket. The Lambda function copies the uploaded object to a new location within the same bucket. Infrastructure is provisioned using Terraform, and Lambda deployment is handled via Python (Boto3).
